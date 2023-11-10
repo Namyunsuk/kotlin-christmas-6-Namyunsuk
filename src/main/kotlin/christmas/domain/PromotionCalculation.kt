@@ -24,12 +24,16 @@ class PromotionCalculation(private val orderedMenu: Map<Menu, Int>) {
     }
 
     fun presentationEvent(): Boolean {
-        var totalPrice = 0
-        orderedMenu.forEach { (menu, count) -> totalPrice += menu.price * count }
-        if (totalPrice > PRESENTATION_PRICE) {
+        if (sumTotalPrice() > PRESENTATION_PRICE) {
             return true
         }
         return false
+    }
+
+    fun sumTotalPrice():Int{
+        var totalPrice = 0
+        orderedMenu.forEach { (menu, count) -> totalPrice += menu.price * count }
+        return totalPrice
     }
 
     companion object {
