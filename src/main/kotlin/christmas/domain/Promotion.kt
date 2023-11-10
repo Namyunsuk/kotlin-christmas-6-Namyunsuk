@@ -8,6 +8,7 @@ class Promotion(private val promotionCalculation: PromotionCalculation, private 
         applyChristmasAccount(appliedPromotion)
         applyDayAccount(appliedPromotion)
         applySpecialPromotion(appliedPromotion)
+        applyPresentationEvent(appliedPromotion)
         return appliedPromotion
     }
 
