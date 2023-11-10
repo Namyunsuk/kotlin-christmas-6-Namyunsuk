@@ -11,13 +11,13 @@ class Promotion(private val promotionCalculation: PromotionCalculation, private 
         return appliedPromotion
     }
 
-    fun applyChristmasAccount(appliedPromotion: MutableMap<String, Int>) {
+    private fun applyChristmasAccount(appliedPromotion: MutableMap<String, Int>) {
         if (visitDate.date <= 25) {
             appliedPromotion["크리스마스 디데이 할인"] = promotionCalculation.christmasDiscount(visitDate.date)
         }
     }
 
-    fun applyDayAccount(appliedPromotion: MutableMap<String, Int>) {
+    private fun applyDayAccount(appliedPromotion: MutableMap<String, Int>) {
         if (isWeekend(visitDate.week)) {
             appliedPromotion["주말 할인"] = promotionCalculation.weekendDiscount()
             return
@@ -25,11 +25,11 @@ class Promotion(private val promotionCalculation: PromotionCalculation, private 
         appliedPromotion["평일 할인"] = promotionCalculation.weekdayDiscount()
     }
 
-    fun isWeekend(weekend: String): Boolean {
+    private fun isWeekend(weekend: String): Boolean {
         return weekend == "FRIDAY" || weekend == "SATURDAY"
     }
 
-    fun applySpecialPromotion(appliedPromotion: MutableMap<String, Int>) {
+    private fun applySpecialPromotion(appliedPromotion: MutableMap<String, Int>) {
         if (visitDate.star) {
             appliedPromotion["특별 할인"] = promotionCalculation.specialDiscount()
         }
