@@ -23,11 +23,21 @@ class PromotionCalculation(private val orderedMenu: Map<Menu, Int>) {
         return SPECIAL_DISCOUNT
     }
 
+    fun presentationEvent(): Boolean {
+        var totalPrice = 0
+        orderedMenu.forEach { (menu, count) -> totalPrice += menu.price * count }
+        if (totalPrice > PRESENTATION_PRICE) {
+            return true
+        }
+        return false
+    }
+
     companion object {
         const val START_DAY = 1
         const val INITIAL_AMOUNT = 1000
         const val DISCOUNT_PER_DAY = 100
         const val DISCOUNT_PER_MENU = 2023
         const val SPECIAL_DISCOUNT = 1000
+        const val PRESENTATION_PRICE = 120_000
     }
 }

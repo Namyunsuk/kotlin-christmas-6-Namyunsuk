@@ -34,4 +34,14 @@ class Promotion(private val promotionCalculation: PromotionCalculation, private 
             appliedPromotion["특별 할인"] = promotionCalculation.specialDiscount()
         }
     }
+
+    fun applyPresentationEvent(appliedPromotion: MutableMap<String, Int>) {
+        if (promotionCalculation.presentationEvent()) {
+            appliedPromotion["증정 이벤트"] = PRESENTATION_EVENT
+        }
+    }
+
+    companion object {
+        const val PRESENTATION_EVENT = 25_000
+    }
 }
