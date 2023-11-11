@@ -10,7 +10,7 @@ class MoneyCalculation(private val appliedPromotion: MutableMap<String, Int>, pr
         return totalPrice
     }
 
-    fun calculateTotalDiscount(): Int {
+    private fun calculateTotalDiscount(): Int {
         return appliedPromotion.filter { it.key != Constants.PRESENTATION_EVENT }.values.sum()
     }
 

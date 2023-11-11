@@ -39,7 +39,7 @@ class Promotion(private val promotionCalculation: PromotionCalculation, private 
         }
     }
 
-    fun applyPresentationEvent(appliedPromotion: MutableMap<String, Int>) {
+    private fun applyPresentationEvent(appliedPromotion: MutableMap<String, Int>) {
         if (promotionCalculation.presentationEvent()) {
             appliedPromotion[Constants.PRESENTATION_EVENT] = Constants.PRESENTATION_EVENT_DISCOUNT
         }
