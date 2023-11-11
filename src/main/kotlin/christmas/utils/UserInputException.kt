@@ -3,7 +3,7 @@ package christmas.utils
 class UserInputException {
     companion object {
         fun visitDateException(userInput: String): Int {
-            require(isNumberException(userInput)) { "[ERROR] 입력값은 숫자여야 합니다. 다시 입력해 주세요." }
+            require(isNumberException(userInput)) { "[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요." }
             val visitDate = userInput.toInt()
             require(visitDateRangeException(visitDate)) { "[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요." }
             return visitDate
@@ -17,6 +17,10 @@ class UserInputException {
             require(onlyBeverageMenuException(orderedMenu)) { "[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요." }
 
             return orderedMenu
+        }
+
+        private fun menuFormatException(userInput: String): Boolean {
+            return menuSeparatorFormatException(userInput) && menuCountIsNumberException(userInput)
         }
 
         private fun splitMenuException(splitMenu: Map<String, Int>): Boolean {
@@ -39,10 +43,16 @@ class UserInputException {
             return Calendar.matchDate(visitDate) != null
         }
 
-        private fun menuFormatException(userInput: String): Boolean {
+        private fun menuSeparatorFormatException(userInput: String): Boolean {
             val menuCountSeparatorNum = userInput.count { it == '-' }
             val menuSeparatorNum = userInput.count { it == ',' }
             return (menuCountSeparatorNum - 1) == menuSeparatorNum
+        }
+
+        private fun menuCountIsNumberException(userInput: String): Boolean {
+            val splitMenu = userInput.split(",")
+                .map { it.split("-") }
+            return splitMenu.all { isNumberException(it[1]) }
         }
 
         private fun menuSizeException(splitMenu: Map<String, Int>): Boolean {
