@@ -36,8 +36,4 @@ class PromotionCalculation(private val orderedMenu: Map<Menu?, Int>) {
         orderedMenu.forEach { (menu, count) -> totalPrice += menu!!.price * count }
         return totalPrice
     }
-
-    companion object {
-
-    }
 }

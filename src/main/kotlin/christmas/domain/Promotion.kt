@@ -7,21 +7,21 @@ class Promotion(private val promotionCalculation: PromotionCalculation, private 
     fun applyPromotion(): MutableMap<String, Int> {
         val appliedPromotion = mutableMapOf<String, Int>()
         if (promotionCalculation.sumTotalPrice() >= Constants.MINIMUM_TOTAL_PRICE_FOR_PROMOTION) {
-            applyChristmasDicount(appliedPromotion)
-            applyDayDicount(appliedPromotion)
+            applyChristmasDiscount(appliedPromotion)
+            applyDayDiscount(appliedPromotion)
             applySpecialPromotion(appliedPromotion)
             applyPresentationEvent(appliedPromotion)
         }
         return appliedPromotion
     }
 
-    private fun applyChristmasDicount(appliedPromotion: MutableMap<String, Int>) {
+    private fun applyChristmasDiscount(appliedPromotion: MutableMap<String, Int>) {
         if (visitDate!!.date <= 25) {
             appliedPromotion[Constants.CHRISTMAS_DISCOUNT] = promotionCalculation.christmasDiscount(visitDate.date)
         }
     }
 
-    private fun applyDayDicount(appliedPromotion: MutableMap<String, Int>) {
+    private fun applyDayDiscount(appliedPromotion: MutableMap<String, Int>) {
         if (isWeekend(visitDate!!.week)) {
             appliedPromotion[Constants.WEEKEND_DISCOUNT] = promotionCalculation.weekendDiscount()
             return
