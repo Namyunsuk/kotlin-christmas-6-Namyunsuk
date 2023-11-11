@@ -22,8 +22,8 @@ enum class Menu(val menuName: String, val price: Int, val category: String) {
     CHAMPAGNE("샴페인", 25_000, "음료");
 
     companion object {
-        fun matchMenu(menuName: String): Menu {
-            return entries.first { it.menuName == menuName }
+        fun matchMenu(menuName: String): Menu? {
+            return entries.firstOrNull { it.menuName == menuName }
         }
     }
 }

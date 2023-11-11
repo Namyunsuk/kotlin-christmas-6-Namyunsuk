@@ -34,8 +34,8 @@ enum class Calendar(val date: Int, val week: String, val star: Boolean) {
     ThirtyONE(31, "Sunday", true);
 
     companion object {
-        fun matchDate(date: Int): Calendar {
-            return entries.first { it.date == date }
+        fun matchDate(date: Int): Calendar? {
+            return entries.firstOrNull { it.date == date }
         }
     }
 }
