@@ -1,13 +1,20 @@
 package christmas.view
 
 import camp.nextstep.edu.missionutils.Console
+import christmas.utils.UserInputException
 
 class InputView {
     companion object {
         fun readDate(): Int {
             println("12월 중 식당 예상 방문 날짜는 언제인가요? (숫자만 입력해 주세요!)")
-            val input = Console.readLine()
-            return input.toInt()
+            while (true) {
+                val input = Console.readLine()
+                try {
+                    return UserInputException.visitDateException(input)
+                } catch (e: IllegalArgumentException) {
+                    println(e.message)
+                }
+            }
         }
 
         fun readMenu(): Map<String, Int> {
