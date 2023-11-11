@@ -33,5 +33,6 @@ class Constants {
         const val DISCOUNT_PER_MENU = 2023
         const val SPECIAL_DISCOUNT_AMOUNT = 1000
         const val PRESENTATION_PRICE = 120_000
+        const val CHRISTMAS_DISCOUNT_LAST_DAY = 25
     }
 }

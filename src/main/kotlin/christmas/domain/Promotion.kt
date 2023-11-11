@@ -16,7 +16,7 @@ class Promotion(private val promotionCalculation: PromotionCalculation, private 
     }
 
     private fun applyChristmasDiscount(appliedPromotion: MutableMap<String, Int>) {
-        if (visitDate!!.date <= 25) {
+        if (visitDate!!.date <= Constants.CHRISTMAS_DISCOUNT_LAST_DAY) {
             appliedPromotion[Constants.CHRISTMAS_DISCOUNT] = promotionCalculation.christmasDiscount(visitDate.date)
         }
     }
