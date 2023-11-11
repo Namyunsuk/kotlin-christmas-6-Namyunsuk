@@ -1,5 +1,8 @@
 package christmas
 
+import christmas.domain.PromotionController
+
 fun main() {
-    TODO("프로그램 구현")
+    val chirstmasPromotion = PromotionController()
+    chirstmasPromotion.start()
 }
