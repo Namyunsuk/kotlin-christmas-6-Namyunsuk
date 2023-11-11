@@ -5,20 +5,20 @@ import christmas.utils.Calendar
 class Promotion(private val promotionCalculation: PromotionCalculation, private val visitDate: Calendar) {
     fun applyPromotion(): MutableMap<String, Int> {
         val appliedPromotion = mutableMapOf<String, Int>()
-        applyChristmasAccount(appliedPromotion)
-        applyDayAccount(appliedPromotion)
+        applyChristmasDicount(appliedPromotion)
+        applyDayDicount(appliedPromotion)
         applySpecialPromotion(appliedPromotion)
         applyPresentationEvent(appliedPromotion)
         return appliedPromotion
     }
 
-    private fun applyChristmasAccount(appliedPromotion: MutableMap<String, Int>) {
+    private fun applyChristmasDicount(appliedPromotion: MutableMap<String, Int>) {
         if (visitDate.date <= 25) {
             appliedPromotion["크리스마스 디데이 할인"] = promotionCalculation.christmasDiscount(visitDate.date)
         }
     }
 
-    private fun applyDayAccount(appliedPromotion: MutableMap<String, Int>) {
+    private fun applyDayDicount(appliedPromotion: MutableMap<String, Int>) {
         if (isWeekend(visitDate.week)) {
             appliedPromotion["주말 할인"] = promotionCalculation.weekendDiscount()
             return
