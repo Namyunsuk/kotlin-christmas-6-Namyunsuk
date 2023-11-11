@@ -15,7 +15,8 @@ class OutputView {
 
         fun printOrderMenu(orderedMenu: Map<Menu?, Int>) {
             println("<주문 메뉴>")
-            orderedMenu.forEach { (menu, count) -> println("${menu!!.menuName} ${count}개\n") }
+            orderedMenu.forEach { (menu, count) -> println("${menu!!.menuName} ${count}개") }
+            println()
         }
 
         fun printTotalOrderPrice(totalOrderPrice: Int) {
