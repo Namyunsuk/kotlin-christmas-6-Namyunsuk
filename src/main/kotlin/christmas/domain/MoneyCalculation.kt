@@ -1,5 +1,6 @@
 package christmas.domain
 
+import christmas.utils.Constants
 import christmas.utils.Menu
 
 class MoneyCalculation(private val appliedPromotion: MutableMap<String, Int>, private val orderedMenu: Map<Menu?, Int>) {
@@ -10,7 +11,7 @@ class MoneyCalculation(private val appliedPromotion: MutableMap<String, Int>, pr
     }
 
     fun calculateTotalDiscount(): Int {
-        return appliedPromotion.filter { it.key != "증정 이벤트" }.values.sum()
+        return appliedPromotion.filter { it.key != Constants.PRESENTATION_EVENT }.values.sum()
     }
 
     fun calculateTotalPromotionPrice(): Int {

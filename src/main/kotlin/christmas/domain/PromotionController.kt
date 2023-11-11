@@ -1,6 +1,7 @@
 package christmas.domain
 
 import christmas.utils.Calendar
+import christmas.utils.Constants
 import christmas.utils.Menu
 import christmas.view.InputView
 import christmas.view.OutputView
@@ -44,7 +45,7 @@ class PromotionController {
     }
 
     private fun controlPresentationMenu(appliedPromotion: MutableMap<String, Int>) {
-        if (appliedPromotion.any { it.key == "증정 이벤트" }) {
+        if (appliedPromotion.any { it.key == Constants.PRESENTATION_EVENT }) {
             OutputView.printPresentationMenu(true)
             return
         }
@@ -70,10 +71,10 @@ class PromotionController {
 
     private fun determineEventBadge(totalPromotionPrice: Int): String {
         return when {
-            totalPromotionPrice >= 20000 -> "산타"
-            totalPromotionPrice >= 10000 -> "트리"
-            totalPromotionPrice >= 5000 -> "별"
-            else -> "없음"
+            totalPromotionPrice >= Constants.THRESHOLD_SANTA -> Constants.SANTA_BADGE
+            totalPromotionPrice >= Constants.THRESHOLD_TREE -> Constants.TREE_BADGE
+            totalPromotionPrice >= Constants.THRESHOLD_STAR -> Constants.STAR_BADGE
+            else -> Constants.NONE
         }
     }
 }

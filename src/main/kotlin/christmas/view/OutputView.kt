@@ -1,5 +1,6 @@
 package christmas.view
 
+import christmas.utils.Constants
 import christmas.utils.Menu
 
 class OutputView {
@@ -28,22 +29,22 @@ class OutputView {
                 println("샴페인 1개\n")
                 return
             }
-            println("없음\n")
+            println("${Constants.NONE}\n")
         }
 
         fun printPromotionDetails(appliedPromotion: MutableMap<String, Int>) {
             println("<혜택 내역>")
             if (appliedPromotion.size == 0) {
-                println("없음\n")
+                println("${Constants.NONE}\n")
                 return
             }
-            appliedPromotion.forEach { (kind, amount) -> println("${kind}: -${String.format("%,d", amount)}원") }
+            appliedPromotion.forEach { (kind, amount) -> println("${kind}: ${String.format("%,d", amount * -1)}원") }
             println()
         }
 
         fun printTotalDisCount(totalDiscount: Int) {
             println("<총혜택 금액>")
-            println("-${String.format(",%d", totalDiscount)}원\n")
+            println("${String.format(",%d", totalDiscount * -1)}원\n")
         }
 
         fun printExpectedPayAmount(expectedPayAmount: Int) {
