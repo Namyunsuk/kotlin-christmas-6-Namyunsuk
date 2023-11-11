@@ -44,12 +44,12 @@ class OutputView {
 
         fun printTotalDisCount(totalDiscount: Int) {
             println("<총혜택 금액>")
-            println("${String.format(",%d", totalDiscount * -1)}원\n")
+            println("${String.format("%,d", totalDiscount * -1)}원\n")
         }
 
         fun printExpectedPayAmount(expectedPayAmount: Int) {
             println("<할인 후 예상 결제 금액>")
-            println("${String.format(",%d", expectedPayAmount)}원\n")
+            println("${String.format("%,d", expectedPayAmount)}원\n")
         }
 
         fun printEventBadge(eventBadge: String) {
