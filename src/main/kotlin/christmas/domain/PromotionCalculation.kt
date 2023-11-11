@@ -5,7 +5,7 @@ import christmas.utils.Menu
 
 class PromotionCalculation(private val orderedMenu: Map<Menu?, Int>) {
     fun christmasDiscount(date: Int): Int {
-        return Constants.INITIAL_AMOUNT + (date -Constants. START_DAY) * Constants.DISCOUNT_PER_DAY;
+        return Constants.INITIAL_AMOUNT + (date -Constants. START_DAY) * Constants.DISCOUNT_PER_DAY
     }
 
     // 평일 할인
@@ -25,10 +25,7 @@ class PromotionCalculation(private val orderedMenu: Map<Menu?, Int>) {
     }
 
     fun presentationEvent(): Boolean {
-        if (sumTotalPrice() > Constants.PRESENTATION_PRICE) {
-            return true
-        }
-        return false
+        return sumTotalPrice() > Constants.PRESENTATION_PRICE
     }
 
     fun sumTotalPrice():Int{
