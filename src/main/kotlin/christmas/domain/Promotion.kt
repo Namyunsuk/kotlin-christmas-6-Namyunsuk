@@ -5,10 +5,12 @@ import christmas.utils.Calendar
 class Promotion(private val promotionCalculation: PromotionCalculation, private val visitDate: Calendar) {
     fun applyPromotion(): MutableMap<String, Int> {
         val appliedPromotion = mutableMapOf<String, Int>()
-        applyChristmasDicount(appliedPromotion)
-        applyDayDicount(appliedPromotion)
-        applySpecialPromotion(appliedPromotion)
-        applyPresentationEvent(appliedPromotion)
+        if (promotionCalculation.sumTotalPrice() >= MINIMUM_TOTAL_PRICE_FOR_PROMOTION) {
+            applyChristmasDicount(appliedPromotion)
+            applyDayDicount(appliedPromotion)
+            applySpecialPromotion(appliedPromotion)
+            applyPresentationEvent(appliedPromotion)
+        }
         return appliedPromotion
     }
 
@@ -44,5 +46,6 @@ class Promotion(private val promotionCalculation: PromotionCalculation, private 
 
     companion object {
         const val PRESENTATION_EVENT = 25_000
+        const val MINIMUM_TOTAL_PRICE_FOR_PROMOTION = 10_000
     }
 }
