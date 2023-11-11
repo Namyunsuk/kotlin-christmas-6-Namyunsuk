@@ -12,9 +12,9 @@ class OutputView {
             println("12월 3일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!\n")
         }
 
-        fun printOrderMenu(orderedMenu: Map<Menu, Int>) {
+        fun printOrderMenu(orderedMenu: Map<Menu?, Int>) {
             println("<주문 메뉴>")
-            orderedMenu.forEach { (menu, count) -> println("${menu.menuName} ${count}개\n") }
+            orderedMenu.forEach { (menu, count) -> println("${menu!!.menuName} ${count}개\n") }
         }
 
         fun printTotalOrderPrice(totalOrderPrice: Int) {

@@ -2,7 +2,7 @@ package christmas.domain
 
 import christmas.utils.Calendar
 
-class Promotion(private val promotionCalculation: PromotionCalculation, private val visitDate: Calendar) {
+class Promotion(private val promotionCalculation: PromotionCalculation, private val visitDate: Calendar?) {
     fun applyPromotion(): MutableMap<String, Int> {
         val appliedPromotion = mutableMapOf<String, Int>()
         if (promotionCalculation.sumTotalPrice() >= MINIMUM_TOTAL_PRICE_FOR_PROMOTION) {
@@ -15,13 +15,13 @@ class Promotion(private val promotionCalculation: PromotionCalculation, private 
     }
 
     private fun applyChristmasDicount(appliedPromotion: MutableMap<String, Int>) {
-        if (visitDate.date <= 25) {
+        if (visitDate!!.date <= 25) {
             appliedPromotion["크리스마스 디데이 할인"] = promotionCalculation.christmasDiscount(visitDate.date)
         }
     }
 
     private fun applyDayDicount(appliedPromotion: MutableMap<String, Int>) {
-        if (isWeekend(visitDate.week)) {
+        if (isWeekend(visitDate!!.week)) {
             appliedPromotion["주말 할인"] = promotionCalculation.weekendDiscount()
             return
         }
@@ -33,7 +33,7 @@ class Promotion(private val promotionCalculation: PromotionCalculation, private 
     }
 
     private fun applySpecialPromotion(appliedPromotion: MutableMap<String, Int>) {
-        if (visitDate.star) {
+        if (visitDate!!.star) {
             appliedPromotion["특별 할인"] = promotionCalculation.specialDiscount()
         }
     }

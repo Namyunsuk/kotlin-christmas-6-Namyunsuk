@@ -2,10 +2,10 @@ package christmas.domain
 
 import christmas.utils.Menu
 
-class MoneyCalculation(private val appliedPromotion: MutableMap<String, Int>, private val orderedMenu: Map<Menu, Int>) {
+class MoneyCalculation(private val appliedPromotion: MutableMap<String, Int>, private val orderedMenu: Map<Menu?, Int>) {
     fun calculateTotalPrice(): Int {
         var totalPrice = 0
-        orderedMenu.forEach { (menu, count) -> totalPrice += menu.price * count }
+        orderedMenu.forEach { (menu, count) -> totalPrice += menu!!.price * count }
         return totalPrice
     }
 
