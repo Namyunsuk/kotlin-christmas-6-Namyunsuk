@@ -12,14 +12,13 @@ class PromotionController {
         controlPreviewPromotion(orderedMenu, visitDate)
     }
 
-    private fun controlMenuAndDateInput(): Pair<MutableMap<Menu?, Int>, Calendar?> {
+    private fun controlMenuAndDateInput(): Pair<Map<Menu?, Int>, Calendar?> {
         val visitDate = Calendar.matchDate(InputView.readDate())
-        val orderedMenu = mutableMapOf<Menu?, Int>()
-        InputView.readMenu().forEach { (name, count) -> orderedMenu[Menu.matchMenu(name)] = count }
+        val orderedMenu = InputView.readMenu()
         return Pair(orderedMenu, visitDate)
     }
 
-    private fun controlPreviewPromotion(orderedMenu: MutableMap<Menu?, Int>, visitDate: Calendar?) {
+    private fun controlPreviewPromotion(orderedMenu: Map<Menu?, Int>, visitDate: Calendar?) {
         val promotionCalculation = PromotionCalculation(orderedMenu)
         val appliedPromotion = Promotion(promotionCalculation, visitDate).applyPromotion()
         val moneyCalculation = MoneyCalculation(appliedPromotion, orderedMenu)
@@ -34,7 +33,7 @@ class PromotionController {
         controlPromotionDetails(moneyCalculation)
     }
 
-    private fun controlOrderedMenu(orderedMenu: MutableMap<Menu?, Int>) {
+    private fun controlOrderedMenu(orderedMenu: Map<Menu?, Int>) {
         OutputView.printEventPreviewComment()
         OutputView.printOrderMenu(orderedMenu)
     }

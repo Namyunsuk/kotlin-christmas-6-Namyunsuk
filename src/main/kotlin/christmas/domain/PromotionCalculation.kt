@@ -2,7 +2,7 @@ package christmas.domain
 
 import christmas.utils.Menu
 
-class PromotionCalculation(private val orderedMenu: MutableMap<Menu?, Int>) {
+class PromotionCalculation(private val orderedMenu: Map<Menu?, Int>) {
     fun christmasDiscount(date: Int): Int {
         return INITIAL_AMOUNT + (date - START_DAY) * DISCOUNT_PER_DAY;
     }
