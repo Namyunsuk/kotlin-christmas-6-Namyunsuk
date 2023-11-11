@@ -34,7 +34,7 @@ class OutputView {
 
         fun printPromotionDetails(appliedPromotion: MutableMap<String, Int>) {
             println("<혜택 내역>")
-            if (appliedPromotion.size == 0) {
+            if (appliedPromotion.isEmpty()) {
                 println("${Constants.NONE}\n")
                 return
             }
