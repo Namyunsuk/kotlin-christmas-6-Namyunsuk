@@ -27,7 +27,10 @@ class PromotionController {
         controlPromotionCalculation(appliedPromotion, moneyCalculation)
     }
 
-    private fun controlPromotionCalculation(appliedPromotion: MutableMap<String, Int>, moneyCalculation: MoneyCalculation) {
+    private fun controlPromotionCalculation(
+        appliedPromotion: MutableMap<String, Int>,
+        moneyCalculation: MoneyCalculation
+    ) {
         controlTotalOrderPrice(moneyCalculation)
         controlPresentationMenu(appliedPromotion)
         OutputView.printPromotionDetails(appliedPromotion)

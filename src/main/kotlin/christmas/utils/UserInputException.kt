@@ -50,7 +50,7 @@ class UserInputException {
         }
 
         private fun menuCountIsNumberException(userInput: String): Boolean {
-            val splitMenu = userInput.split(Constants.MENU_SEPARATOR )
+            val splitMenu = userInput.split(Constants.MENU_SEPARATOR)
                 .map { it.split(Constants.MENU_COUNT_SEPARATOR) }
             return splitMenu.all { isNumberException(it[1]) }
         }
