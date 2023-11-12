@@ -6,13 +6,17 @@ import christmas.utils.Constants
 class Promotion(private val promotionCalculation: PromotionCalculation, private val visitDate: Calendar?) {
     fun applyPromotion(): MutableMap<String, Int> {
         val appliedPromotion = mutableMapOf<String, Int>()
-        if (promotionCalculation.sumTotalPrice() >= Constants.MINIMUM_TOTAL_PRICE_FOR_PROMOTION) {
+        if (confirmMinimumTotalPriceForPromotion(promotionCalculation.sumTotalPrice())) {
             applyChristmasDiscount(appliedPromotion)
             applyDayDiscount(appliedPromotion)
             applySpecialPromotion(appliedPromotion)
             applyPresentationEvent(appliedPromotion)
         }
         return appliedPromotion
+    }
+
+    private fun confirmMinimumTotalPriceForPromotion(totalPrice: Int): Boolean {
+        return promotionCalculation.sumTotalPrice() >= Constants.MINIMUM_TOTAL_PRICE_FOR_PROMOTION
     }
 
     private fun applyChristmasDiscount(appliedPromotion: MutableMap<String, Int>) {
