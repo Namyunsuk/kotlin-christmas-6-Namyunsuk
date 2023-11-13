@@ -4,7 +4,7 @@ import christmas.utils.Constants
 import christmas.utils.Menu
 
 class MoneyCalculation(
-    private val appliedPromotion: MutableMap<String, Int>,
+    private val appliedPromotion: Map<String, Int>,
     private val orderedMenu: Map<Menu?, Int>
 ) {
     fun calculateTotalPrice(): Int {
