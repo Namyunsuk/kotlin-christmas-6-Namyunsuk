@@ -1,6 +1,5 @@
 package christmas
 
-import christmas.domain.MoneyCalculation
 import christmas.domain.PromotionCalculation
 import christmas.utils.Menu
 import org.junit.jupiter.api.Test
