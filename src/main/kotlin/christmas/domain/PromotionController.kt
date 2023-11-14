@@ -19,9 +19,21 @@ class PromotionController {
         return Pair(orderedMenu, visitDate)
     }
 
+    private fun applyPromotion(promotion: Promotion): MutableMap<String, Int> {
+        val appliedPromotion = mutableMapOf<String, Int>()
+        if (promotion.confirmMinimumTotalPriceForPromotion()) {
+            promotion.applyChristmasDiscount(appliedPromotion)
+            promotion.applyDayDiscount(appliedPromotion)
+            promotion.applySpecialPromotion(appliedPromotion)
+            promotion.applyPresentationEvent(appliedPromotion)
+        }
+        return appliedPromotion
+    }
+
     private fun controlPreviewPromotion(orderedMenu: Map<Menu?, Int>, visitDate: Calendar?) {
         val promotionCalculation = PromotionCalculation(orderedMenu)
-        val appliedPromotion = Promotion(promotionCalculation, visitDate).applyPromotion()
+        val promotion = Promotion(promotionCalculation, visitDate)
+        val appliedPromotion = applyPromotion(promotion)
         val moneyCalculation = MoneyCalculation(appliedPromotion, orderedMenu)
         controlOrderedMenu(orderedMenu)
         controlPromotionCalculation(appliedPromotion, moneyCalculation)
