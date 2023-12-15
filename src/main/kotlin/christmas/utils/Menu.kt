@@ -22,7 +22,7 @@ enum class Menu(val category: String, val menuName: String, val amount: Int) {
     CHAMPAGNE("음료", "샴페인", 25000);
 
     companion object {
-        fun matchMEnu(menuName: String): Menu? {
+        fun matchMenu(menuName: String): Menu? {
             return entries.firstOrNull { it.menuName == menuName }
         }
     }

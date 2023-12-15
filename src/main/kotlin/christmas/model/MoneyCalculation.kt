@@ -3,10 +3,11 @@ package christmas.model
 import christmas.utils.Menu
 
 class MoneyCalculation {
-    fun calculateTotalOrderAmount(orderedMenu: Map<Menu, Int>): Int {
+    fun calculateTotalOrderAmount(orderedMenu: Map<String, Int>): Int {
         var totalAmount = 0
         for ((menu, count) in orderedMenu) {
-            totalAmount += menu.amount * count
+            val menuInfo = Menu.matchMenu(menu)
+            totalAmount += menuInfo!!.amount * count
         }
         return totalAmount
     }
@@ -28,7 +29,11 @@ class MoneyCalculation {
         return totalAmount
     }
 
-    companion object{
+    fun calculateExpectedPayment(totalOrderAmount: Int, promotionAmount: Int): Int {
+        return totalOrderAmount - promotionAmount
+    }
+
+    companion object {
         const val NOT_DISCOUNT_PROMOTION = "증정 이벤트"
     }
 }

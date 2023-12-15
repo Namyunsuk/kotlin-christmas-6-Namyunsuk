@@ -8,13 +8,13 @@ class PromotionCalculation {
         return DEFAULT_CHRISTMAS_PROMOTION_AMOUNT + (date - 1) * CHRISTMAS_PROMOTION_INCREASE_AMOUNT
     }
 
-    fun calculateWeekdayPromotion(menu: Map<Menu, Int>): Int { //평일할인
-        val dessertCount = menu.filter { (menu, amount) -> menu.category == "디저트" }.count()
+    fun calculateWeekdayPromotion(menu: Map<String, Int>): Int { //평일할인
+        val dessertCount = menu.filter { (menu, amount) -> Menu.matchMenu(menu)!!.category == "디저트" }.values.sum()
         return dessertCount * 2023
     }
 
-    fun calculateWeekendPromotion(menu: Map<Menu, Int>): Int { //평일할인
-        val mainMenuCount = menu.filter { (menu, amount) -> menu.category == "메인" }.count()
+    fun calculateWeekendPromotion(menu: Map<String, Int>): Int { //평일할인
+        val mainMenuCount = menu.filter { (menu, amount) -> Menu.matchMenu(menu)!!.category == "메인" }.values.sum()
         return mainMenuCount * 2023
     }
 

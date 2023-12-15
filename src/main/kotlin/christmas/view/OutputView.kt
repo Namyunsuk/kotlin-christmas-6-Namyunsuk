@@ -11,6 +11,7 @@ class OutputView {
         }
 
         fun printOrderedMenu(orderedMenu: Map<String, Int>) {
+            println("<주문 메뉴>")
             for ((menu, number) in orderedMenu) {
                 println("${menu} ${number}개")
             }
@@ -26,16 +27,16 @@ class OutputView {
         fun printPresentMenu(present: Boolean) {
             println("<증정 메뉴>")
             if (present) {
-                println("샴페인 1개")
+                println("샴페인 1개\n")
                 return
             }
-            println("없음")
+            println("없음\n")
         }
 
         fun printPromotionList(promotionList: Map<String, Int>) {
             println("<혜택 내역>")
             if (promotionList.isEmpty()) {
-                println("없음")
+                println("없음\n")
                 return
             }
             for ((promotionName, promotionAmount) in promotionList) {
@@ -50,7 +51,14 @@ class OutputView {
             println()
         }
 
+        fun printExpectedPayment(expectedPayment:Int){
+            println("<할인 후 예상 결제 금액>")
+            println("${String.format("%,d",expectedPayment)}원")
+            println()
+        }
+
         fun printEventBadge(badgeName: String) {
+            println("<12월 이벤트 배지>")
             println(badgeName)
         }
     }
