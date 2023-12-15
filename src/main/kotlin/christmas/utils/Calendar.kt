@@ -1,6 +1,6 @@
 package christmas.utils
 
-enum class Calendar(val date: Int, val dayOfWeek: String, weekend: Boolean, star: Boolean) {
+enum class Calendar(val date: Int, val dayOfWeek: String,val weekend: Boolean,val star: Boolean) {
     FIRST(1, "금요일", true, false),
     SECOND(2, "토요일", true, false),
     THIRD(3, "일요일", false, true),
